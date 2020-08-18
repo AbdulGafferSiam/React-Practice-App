@@ -2,32 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const name = "Siam";
-const imgURL1 = "https://picsum.photos/536/354";
-const imgURL2 = "https://picsum.photos/536/355";
-const imgURL3 = "https://picsum.photos/536/356";
-const link = "http://www.siamsbucket.com/";
+let time = new Date().toLocaleTimeString().toString();
+let hour = parseInt(time.split(":", 1));
+let median = time.split(" ")[1].toUpperCase();
+let greeting = '';
+let gtStyle = {};
 
-// add css by creating as an object
-const cssHeader = {
-    color: '#fa9191',
-    textAlign: 'center',
-    textTransform: 'capitalize',
-    fontWeight: 'bold',
-    textShadow: '0px 2px 4x #5e131f',
-    margin: '30px 0px',
-    fontFamily: '"Josefin Sans", sans-serif'
-};
+let h = new Date();
+console.log(Date.now());
+
+if(median === 'AM'){
+  greeting = "Good Morning";
+  gtStyle.color = "green";
+} 
+else if((hour === 12 || hour <= 7) && median === 'PM'){
+  greeting = "Good Afternoon";
+  gtStyle.color = "orange";
+}
+else{
+  greeting = "Good Night";
+  gtStyle.color = "black";
+}
 
 ReactDOM.render(
   <>
-    <h1 className="header" style={ cssHeader }>My name is { name } </h1>
-    <div className="img_div">
-      <img src={imgURL1} alt="random images" />
-      <img src={imgURL2} alt="random images" />
-      <a href={link} target="_blank">
-        <img src={imgURL3} alt="random images" />
-      </a>
+    <div className="main-div">
+      <h1>Hello Sir, <span style={ gtStyle }> { greeting } </span></h1>
     </div>
   </>,
   document.getElementById('root')
