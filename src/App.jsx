@@ -10,16 +10,16 @@ function App() {
     let gtStyle = {};
 
     if(hour < 12) {
-    greeting = "Good Morning";
-    gtStyle.color = "green";
+        greeting = "Good Morning";
+        gtStyle.color = "green";
     } 
     else if(12 <=hour && hour <= 19) {
-    greeting = "Good Afternoon";
-    gtStyle.color = "orange";
+        greeting = "Good Afternoon";
+        gtStyle.color = "orange";
     }
     else{
-    greeting = "Good Night";
-    gtStyle.color = "black";
+        greeting = "Good Night";
+        gtStyle.color = "black";
     }
     return (
         <>
