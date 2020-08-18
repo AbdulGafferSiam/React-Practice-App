@@ -43,3 +43,7 @@ git push -u origin master
 ### JSX
 Javascript Extention/XML
 
+### git version change
+git log --oneline
+git checkout version(2131d96) .
+
