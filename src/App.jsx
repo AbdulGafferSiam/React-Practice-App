@@ -1,16 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Heading from './Heading';
-import Paragraph from './Paragraph';
-import MovieList from './MovieList';
+import Card from './Cards';
+import Series from './SrcData';
+import './index.css';
 
+const ncard = val => {
+    return (
+        <Card
+            name={val.name}
+            imgsrc={val.imgsrc}
+            title={val.title}
+            link={val.link} />
+    );
+}
 
 function App() {
     return (
         <>
-            <Heading />
-            <Paragraph />
-            <MovieList />
+            <h1 className="heading_style">Top Netflix Series</h1>
+            { Series.map(ncard) }
         </>
     );
 }

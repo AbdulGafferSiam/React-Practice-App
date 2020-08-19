@@ -47,3 +47,18 @@ Javascript Extention/XML
 git log --oneline
 git checkout version(2131d96) .
 
+### git head
+
+Use the command:
+
+git rev-parse HEAD
+
+For the short version:
+
+git rev-parse --short HEAD
+
+### If you want to keep your changes associated with the detached HEAD
+
+1. Run git branch tmp - this will save your changes in a new branch called tmp.
+2. Run git checkout master
+3. If you would like to incorporate the changes you made into master, run git merge tmp from the master branch. You should be on the master branch after running git checkout master
