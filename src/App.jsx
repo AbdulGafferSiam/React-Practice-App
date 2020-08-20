@@ -18,18 +18,19 @@ console.log(useState());
 */
 
 const App = () => {
+    let currTime = new Date().toLocaleTimeString();
     // Array destructuring
-    let [count, setCount] = useState(0);
+    let [time, setTime] = useState(currTime);
 
-    const IncNum = () => {
-        setCount(count + 1);
+    const UpdTime = () => {
+        setTime(new Date().toLocaleTimeString());
     };
 
     return (
         <>
             <div>
-                <h1> { count } </h1>
-                <button onClick={ IncNum }> Click me </button>
+                <h1> { time } </h1>
+                <button onClick={ UpdTime }> Click me </button>
             </div>
         </>
     );
