@@ -26,11 +26,12 @@ const App = () => {
         setTime(new Date().toLocaleTimeString());
     };
 
+    setInterval(UpdTime, 1000);
+
     return (
         <>
             <div>
                 <h1> { time } </h1>
-                <button onClick={ UpdTime }> Click me </button>
             </div>
         </>
     );
