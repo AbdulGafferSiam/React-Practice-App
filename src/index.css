@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0%;
     box-sizing: border-box;
-    background-color: #d2dbdd;
+    background-color: #9b59b6;
 }
 
 .heading_style {
@@ -27,11 +27,17 @@ div {
     align-items: center;
 }
 
+h1 {
+    color: white;
+    background: transparent;
+    text-shadow: 0 2px 2px black;
+}
+
 button {
     padding: 15px 20px;
     background-color: #9b59b6;
     color: white;
-    border: 2px solid #ecf0f1;
+    border: 3px solid #ecf0f1;
     outline: none;
     border-radius: 5px;
     text-transform: uppercase;
