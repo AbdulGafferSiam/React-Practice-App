@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
 import './index.css';
 
-const App = () => { 
-    // get the inputText from the onChange event
-    const [inputText, setInputText] = useState('');
-    const inputEvent = (event) => {
-        let val = event.target.value;
-        setInputText(val);
+const App = () => {
+    const [firstName, setFirstName] = useState('');
+    const inputFirstName = (event) => {
+        setFirstName(event.target.value);
     }
 
-    // set the inputText after onClick event
-    const [btnSendText, setBtnSendText] = useState('');
-    const btnEvent = () => {
-        setBtnSendText(inputText);
+    const [lastName, setLastName] = useState('');
+    const inputLastName = (event) => {
+        setLastName(event.target.value);
     }
-    // In a controlled component, form data is handled by a react component
-    // The alternative is uncontrolled component, where form data is handled by the DOM itself
-    // the input "value" is a single source of truth
-    // So, in the value field and onChange fields value must need to be same
-    return (
+
+    const [name, setName] = useState('');
+    const formEvent = (event) => {
+        // Eliminate form reload behavior after onSubmit()
+        event.preventDefault();
+        setName(firstName + " " + lastName);
+    }
+   return (
         <>
-            <div>
-                <h1> Input: {" " + inputText} </h1>
-                <h1> Button: {" " + btnSendText} </h1>
-                <input type="text" 
-                    placeholder="Enter Your Name" 
-                    onChange={inputEvent} 
-                    value={inputText} />
-                <button onClick={btnEvent}> Click Me </button>
+            <div className="main_div">
+                <form onSubmit={formEvent}>
+                    <div className="sub_div">
+                        <h1> Hello {" " + name} </h1>
+                        <input type="text"
+                            placeholder="Enter First Name"
+                            onChange={inputFirstName}
+                            value={firstName} />
+                        <input type="text"
+                            placeholder="Enter Last Name"
+                            onChange={inputLastName}
+                            value={lastName} />
+                        <button type="submit"> Click Me </button>
+                    </div>
+                </form>
             </div>
         </>
     );
