@@ -1,85 +1,62 @@
 import React, { useState } from 'react';
+import ToDoList from './ToDoList'; 
 import './index.css';
 
-const emailStyle = {
-    color: "black",
-    fontSize: "20px",
-    textShadow: "none"
-}
-
 const App = () => {
-    const [person, setFullName] = useState({
-        firstName: '',
-        lastName: '',
-        email: ''
-    });
-    const inputEvent = (event) => {
-        // let value = event.target.value;
-        // let name = event.target.name;
-        // Array destructuring
-        const { value, name } = event.target;
+    const [items, setItems] = useState();
 
-        setFullName((preValue) => {
-            // Do the commented area by Sperad Operator
-            return {
-                ...preValue,
-                [name] : value
-            }
-        /*
-            if (name === "firstName") {
-                return {
-                    firstName: value,
-                    lastName: preValue.lastName,
-                    email: preValue.email
-                }
-            } else if (name === "lastName") {
-                return {
-                    firstName: preValue.firstName,
-                    lastName: value,
-                    email: preValue.email
-                }
-            } else if (name === "email") {
-                return {
-                    firstName: preValue.firstName,
-                    lastName: preValue.lastName,
-                    email: value
-                }
-            }
-        */
+    const inputItems = (event) => {
+        let value = event.target.value;
+        setItems(value);
+    }
+
+    const [displayItems, setDisplayItems] = useState([]);
+
+    const showItems = () => {
+        setDisplayItems((prevItems) => {
+            return [...prevItems, items];
+        });
+        setItems("");
+    }
+
+    const deleteItem = (id) => {
+        setDisplayItems((prevItems) => {
+            // if return  value is true element remains in the resulting array 
+            // but if the return value is false the element will be removed for the resulting array
+            return prevItems.filter((currData, index) => {
+                return index !== id;
+            });
         });
     }
-    const [btnPerson, setBtnPerson] = useState();
-    const formEvent = (event) => {
-        // Eliminate form reload behavior after onSubmit()
-        event.preventDefault();
-        setBtnPerson(" " + person.firstName + " " + person.lastName);
-    }
+
     return (
         <>
             <div className="main_div">
-                <form onSubmit={formEvent}>
-                    <div className="sub_div">
-                        <h1> Hello { btnPerson } </h1>
-                        <h1 style={ emailStyle }> { person.email } </h1>
-                        <input type="text"
-                            placeholder="Enter First Name"
-                            name="firstName"
-                            onChange={inputEvent}
-                            value={person.firstName} />
-                        <input type="text"
-                            placeholder="Enter Last Name"
-                            name="lastName"
-                            onChange={inputEvent}
-                            value={person.lastName} />
-                        <input type="email"
-                            placeholder="Enter Email"
-                            name="email"
-                            onChange={inputEvent}
-                            value={person.email}
-                            autoComplete="off" />
-                        <button type="submit"> Click Me </button>
-                    </div>
-                </form>
+                <div className="sub_div">
+                    <br />
+                    <h1> ToDo List </h1>
+                    <br />
+                    <input
+                        type="text"
+                        placeholder="Add Items"
+                        value={items}
+                        onChange={inputItems} />
+                    <button onClick={showItems}> + </button>
+
+                    <ol>
+                        {
+                            // array.map(current value, index, full array, this)
+                            // generate a new array based on your existing array
+                            displayItems.map((item, index) => {
+                                return <ToDoList 
+                                    key = { index } 
+                                    id = { index }
+                                    list = { item } 
+                                    onSelect = { deleteItem } />
+                            })
+                        }
+                    </ol>
+                </div>
             </div>
         </>
     );
