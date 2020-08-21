@@ -16,10 +16,16 @@ const App = () => {
     const inputEvent = (event) => {
         // let value = event.target.value;
         // let name = event.target.name;
-
+        // Array destructuring
         const { value, name } = event.target;
 
         setFullName((preValue) => {
+            // Do the commented area by Sperad Operator
+            return {
+                ...preValue,
+                [name] : value
+            }
+        /*
             if (name === "firstName") {
                 return {
                     firstName: value,
@@ -39,6 +45,7 @@ const App = () => {
                     email: value
                 }
             }
+        */
         });
     }
     const [btnPerson, setBtnPerson] = useState();
