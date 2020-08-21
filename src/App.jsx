@@ -1,37 +1,75 @@
 import React, { useState } from 'react';
 import './index.css';
 
+const emailStyle = {
+    color: "black",
+    fontSize: "20px",
+    textShadow: "none"
+}
+
 const App = () => {
-    const [firstName, setFirstName] = useState('');
-    const inputFirstName = (event) => {
-        setFirstName(event.target.value);
-    }
+    const [person, setFullName] = useState({
+        firstName: '',
+        lastName: '',
+        email: ''
+    });
+    const inputEvent = (event) => {
+        // let value = event.target.value;
+        // let name = event.target.name;
 
-    const [lastName, setLastName] = useState('');
-    const inputLastName = (event) => {
-        setLastName(event.target.value);
-    }
+        const { value, name } = event.target;
 
-    const [name, setName] = useState('');
+        setFullName((preValue) => {
+            if (name === "firstName") {
+                return {
+                    firstName: value,
+                    lastName: preValue.lastName,
+                    email: preValue.email
+                }
+            } else if (name === "lastName") {
+                return {
+                    firstName: preValue.firstName,
+                    lastName: value,
+                    email: preValue.email
+                }
+            } else if (name === "email") {
+                return {
+                    firstName: preValue.firstName,
+                    lastName: preValue.lastName,
+                    email: value
+                }
+            }
+        });
+    }
+    const [btnPerson, setBtnPerson] = useState();
     const formEvent = (event) => {
         // Eliminate form reload behavior after onSubmit()
         event.preventDefault();
-        setName(firstName + " " + lastName);
+        setBtnPerson(" " + person.firstName + " " + person.lastName);
     }
-   return (
+    return (
         <>
             <div className="main_div">
                 <form onSubmit={formEvent}>
                     <div className="sub_div">
-                        <h1> Hello {" " + name} </h1>
+                        <h1> Hello { btnPerson } </h1>
+                        <h1 style={ emailStyle }> { person.email } </h1>
                         <input type="text"
                             placeholder="Enter First Name"
-                            onChange={inputFirstName}
-                            value={firstName} />
+                            name="firstName"
+                            onChange={inputEvent}
+                            value={person.firstName} />
                         <input type="text"
                             placeholder="Enter Last Name"
-                            onChange={inputLastName}
-                            value={lastName} />
+                            name="lastName"
+                            onChange={inputEvent}
+                            value={person.lastName} />
+                        <input type="email"
+                            placeholder="Enter Email"
+                            name="email"
+                            onChange={inputEvent}
+                            value={person.email}
+                            autoComplete="off" />
                         <button type="submit"> Click Me </button>
                     </div>
                 </form>
