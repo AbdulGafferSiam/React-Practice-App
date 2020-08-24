@@ -1,31 +1,21 @@
 import React, { useState } from 'react';
-import ToDoList from './ToDoList'; 
 import './index.css';
 
 const App = () => {
-    const [items, setItems] = useState();
-
-    const inputItems = (event) => {
-        let value = event.target.value;
-        setItems(value);
+    const [val, setVal] = useState(0);
+    
+    const btnLeft = () => {
+        setVal(val + 1);
     }
 
-    const [displayItems, setDisplayItems] = useState([]);
-
-    const showItems = () => {
-        setDisplayItems((prevItems) => {
-            return [...prevItems, items];
-        });
-        setItems("");
-    }
-
-    const deleteItem = (id) => {
-        setDisplayItems((prevItems) => {
-            // if return  value is true element remains in the resulting array 
-            // but if the return value is false the element will be removed for the resulting array
-            return prevItems.filter((currData, index) => {
-                return index !== id;
-            });
+    const btnRight = () => {
+        setVal((prevValue) => {
+            if (prevValue === 0) {
+                alert("Value Can not be negetive.");
+                return prevValue;
+            } else {
+                return prevValue - 1;
+            }
         });
     }
 
@@ -33,29 +23,10 @@ const App = () => {
         <>
             <div className="main_div">
                 <div className="sub_div">
+                    <h1> { val } </h1>
                     <br />
-                    <h1> ToDo List </h1>
-                    <br />
-                    <input
-                        type="text"
-                        placeholder="Add Items"
-                        value={items}
-                        onChange={inputItems} />
-                    <button onClick={showItems}> + </button>
-
-                    <ol>
-                        {
-                            // array.map(current value, index, full array, this)
-                            // generate a new array based on your existing array
-                            displayItems.map((item, index) => {
-                                return <ToDoList 
-                                    key = { index } 
-                                    id = { index }
-                                    list = { item } 
-                                    onSelect = { deleteItem } />
-                            })
-                        }
-                    </ol>
+                    <button onClick={btnLeft}> Increament </button>
+                    <button onClick={btnRight}> Decreament </button>
                 </div>
             </div>
         </>
