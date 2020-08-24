@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 import './index.css';
 
 const App = () => {
@@ -25,10 +27,18 @@ const App = () => {
         <>
             <div className="main_div">
                 <div className="sub_div">
-                    <h1> { val } </h1>
+                    <h1> {val} </h1>
                     <br />
-                    <button onClick={btnLeft}> <AddIcon /> </button>
-                    <button onClick={btnRight}> <DeleteIcon /> </button>
+                    <Tooltip title="Increament by 1">
+                        <Button onClick={btnLeft} className="btn_green">
+                            <AddIcon />
+                        </Button>
+                    </Tooltip>
+                    <Tooltip title="Decreament by 1">
+                        <Button onClick={btnRight} className="btn_red">
+                            <DeleteIcon />
+                        </Button>
+                    </Tooltip>
                 </div>
             </div>
         </>

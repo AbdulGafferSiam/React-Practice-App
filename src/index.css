@@ -45,10 +45,13 @@ button {
     box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
-button:hover {
-    background-color: #20bf6b;
+.btn_green:hover {
+    color: #20bf6b;
 }
 
+.btn_red:hover {
+    color: #ff4757;
+}
 
 @media (max-width: 768px) {
     .sub_div {
