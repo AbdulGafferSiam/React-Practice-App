@@ -1,44 +1,65 @@
 import React, { useState } from 'react';
-import AddIcon from '@material-ui/icons/Add';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
+import AddIcon from '@material-ui/icons/Add';
+import ToDoList from './ToDoList';
 import './index.css';
 
 const App = () => {
-    const [val, setVal] = useState(0);
-
-    const btnLeft = () => {
-        setVal(val + 1);
+    const [item, setItem] = useState("");
+    const itemEvent = (event) => {
+        setItem(event.target.value);
     }
 
-    const btnRight = () => {
-        setVal((prevValue) => {
-            if (prevValue === 0) {
-                alert("Value Can not be negetive.");
-                return prevValue;
-            } else {
-                return prevValue - 1;
-            }
+    const [items, setItems] = useState([]);
+    const addItem = () => {
+        if (item === "") return;
+        setItems((preValue) => {
+            return [...preValue, item];
         });
+        setItem("");
+    }
+
+    const keyPressHandler = (event) => {
+        if (event.charCode === 13) {
+            return addItem();
+        }
     }
 
     return (
         <>
             <div className="main_div">
-                <div className="sub_div">
-                    <h1> {val} </h1>
+                <div className="center_div">
+                    <h1>TODO LIST</h1>
                     <br />
-                    <Tooltip title="Increament by 1">
-                        <Button onClick={btnLeft} className="btn_green">
-                            <AddIcon />
-                        </Button>
-                    </Tooltip>
-                    <Tooltip title="Decreament by 1">
-                        <Button onClick={btnRight} className="btn_red">
-                            <DeleteIcon />
-                        </Button>
-                    </Tooltip>
+                    <input
+                        type="text"
+                        placeholder="Add items"
+                        onChange={itemEvent}
+                        onKeyPress={keyPressHandler}
+                        value={item}
+                        tabIndex="0"
+                    />
+                    <Button
+                        className="btn_add"
+                        onClick={addItem}>
+                        <AddIcon />
+                    </Button>
+                    <br />
+                    <div className="item_list">
+                        <ol>
+                            {
+
+                                items.map((item, index) => {
+                                    return <ToDoList
+                                        key={index}
+                                        id={index}
+                                        item={item}
+                                    />
+                                })
+                            }
+                        </ol>
+                    </div>
+                    <br />
                 </div>
             </div>
         </>
