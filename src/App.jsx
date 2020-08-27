@@ -1,50 +1,31 @@
-import React, { useState } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import CreateNote from './CreateNote';
-import Note from './Note';
+import React, { createContext } from 'react';
+import CompA from './CompA';
+
+/*
+React Context Api:
+Allows you to easily access data at different levels
+of the component tree, without passing prop to every level
+
+step 1: createContext()
+step 2: provider
+step 3: consumer
+*/
+
+const FirstName = createContext();
+const LastName = createContext();
 
 const App = () => {
-    const [items, setItems] = useState([]);
-
-    const addNote = (note) => {
-        if(note.title==="" || note.content==="") {
-            return;
-        }
-        setItems((prevItems) => {
-            return [...prevItems, note];
-        });
-    }
-
-    const btnDeleteItem = (id) => {
-        setItems((prevItems) => 
-            prevItems.filter((item, index) => {
-                return id !== index;
-            })
-        );
-    }
 
     return (
         <>
-            <Header /> 
-            <CreateNote passNote={ addNote } />
-
-            {
-                items.map((item, index) => {
-                    return (<>
-                        <Note
-                            key={index}
-                            id={index}
-                            title={item.title}
-                            content={item.content}
-                            onSelect={btnDeleteItem} />
-                    </>);
-                })
-            }
-
-            <Footer />
+            <FirstName.Provider value={"Siam"}>
+                <LastName.Provider value={"Ahmed"}>
+                    <CompA />
+                </LastName.Provider>
+            </FirstName.Provider>
         </>
     );
 }
 
 export default App;
+export { FirstName, LastName };
