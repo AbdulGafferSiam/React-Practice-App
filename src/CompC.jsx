@@ -2,7 +2,7 @@ import React from 'react';
 import { FirstName, LastName } from './App';
 
 // consumer consume only function
-// craete a callback hell
+// create a callback hell
 
 const CompC = () => {
 
