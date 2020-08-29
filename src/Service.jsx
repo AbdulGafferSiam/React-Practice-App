@@ -1,13 +1,13 @@
 import React from 'react';
 import './index.css';
 
-const About = (props) => {
+const Service = () => {
 
     return (
         <>
-            <h1>{props.pageName} Page</h1>
+            <h1>Service Page</h1>
         </>
     );
 }
 
-export default About;
+export default Service;

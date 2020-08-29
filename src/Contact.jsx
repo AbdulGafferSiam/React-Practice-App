@@ -1,11 +1,11 @@
 import React from 'react';
 import './index.css';
 
-const Contact = () => {
+const Contact = (props) => {
 
     return (
         <>
-            <h1>Contact Page</h1>
+            <h1>{props.pageName} Page</h1>
         </>
     );
 }
