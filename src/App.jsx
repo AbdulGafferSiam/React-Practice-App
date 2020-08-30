@@ -5,11 +5,15 @@ import Contact from './Contact';
 import Error from './Error';
 import Menu from './Menu';
 import Service from './Service';
+import User from './User';
 import './index.css';
 
 // reference : 
 // https://medium.com/@migcoder/difference-between-render-and-component-prop-on-react-router-v4-368ca7fedbec
 // https://stackoverflow.com/questions/48150567/react-router-difference-between-component-and-render
+
+// useParam()
+// https://medium.com/better-programming/how-to-pass-multiple-route-parameters-in-a-react-url-path-4b919de0abbe
 
 const App = () => {
 
@@ -22,6 +26,8 @@ const App = () => {
                 {/* Render check changes of value on every chick and only changed result show on screen*/}
                 <Route exact path='/contact' render={() => <Contact pageName="Contact" />} />
                 <Route path='/service' component={Service} />
+                <Route exact path='/user/:fname' component={User} />
+                <Route path='/user/:fname/:lname' component={User} />
                 <Route component={Error} />
             </Switch>
         </>

@@ -30,7 +30,7 @@ a.active_class {
     line-height: 60px;
     background-color: #20232a;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 h1 {

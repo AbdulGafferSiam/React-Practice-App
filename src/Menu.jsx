@@ -19,6 +19,10 @@ const Menu = () => {
                     activeClassName="active_class"
                     to="/service"
                     style={{ textDecoration: 'none' }}> Service </NavLink>
+                    <NavLink
+                    activeClassName="active_class"
+                    to="/user/siam"
+                    style={{ textDecoration: 'none' }}> User </NavLink>
             </div>
         </>
     );
