@@ -6,6 +6,7 @@ import Error from './Error';
 import Menu from './Menu';
 import Service from './Service';
 import User from './User';
+import Search from './Search';
 import './index.css';
 
 // reference : 
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path='/service' component={Service} />
                 <Route exact path='/user/:fname' component={User} />
                 <Route path='/user/:fname/:lname' component={User} />
+                <Route path='/search' component={Search} />
                 <Route component={Error} />
             </Switch>
         </>

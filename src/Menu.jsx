@@ -11,15 +11,19 @@ const Menu = () => {
                     activeClassName="active_class"
                     to="/"
                     style={{ textDecoration: 'none' }}> About </NavLink>
-                <NavLink
+                <NavLink exact
                     activeClassName="active_class"
                     to="/contact"
                     style={{ textDecoration: 'none' }}> Contact </NavLink>
-                <NavLink
+                <NavLink exact
+                    activeClassName="active_class"
+                    to="/search"
+                    style={{ textDecoration: 'none' }}> Search </NavLink>
+                <NavLink exact
                     activeClassName="active_class"
                     to="/service"
                     style={{ textDecoration: 'none' }}> Service </NavLink>
-                    <NavLink
+                <NavLink
                     activeClassName="active_class"
                     to="/user/siam"
                     style={{ textDecoration: 'none' }}> User </NavLink>
