@@ -26,10 +26,10 @@ const App = () => {
                 <Route exact path='/' component={() => <About pageName="About" />} />
                 {/* Render check changes of value on every chick and only changed result show on screen*/}
                 <Route exact path='/contact' render={() => <Contact pageName="Contact" />} />
-                <Route path='/service' component={Service} />
+                <Route exact path='/service' component={Service} />
                 <Route exact path='/user/:fname' component={User} />
-                <Route path='/user/:fname/:lname' component={User} />
-                <Route path='/search' component={Search} />
+                <Route exact path='/user/:fname/:lname' component={User} />
+                <Route exact path='/search' component={Search} />
                 <Route component={Error} />
             </Switch>
         </>
