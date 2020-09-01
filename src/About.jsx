@@ -1,11 +1,16 @@
 import React from 'react';
 import './index.css';
+import Common from './Common';
+import AboutImg from './images/about.png';
 
-const About = (props) => {
+const About = () => {
 
     return (
         <>
-            <h1>{props.pageName} Page</h1>
+            <Common description="Welcome To The About Page" 
+                 btnName="Contact Me"
+                 visit="/contact"
+                 image={ AboutImg } />
         </>
     );
 }
