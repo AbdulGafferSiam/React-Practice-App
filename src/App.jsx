@@ -1,29 +1,17 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Home from './Home';
+import BookContainer from './BookContainer';
+import { Provider } from 'react-redux';
+import Store from './redux/Store';
 import './index.css';
-import About from './About';
-import Service from './Service';
-import Contact from './Contact';
-import NavBar from './Navbar';
-import Footer from './Footer';
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 
 const App = () => {
-
     return (
-        <>
-            <NavBar />
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/service" component={Service} />
-                <Route exact path="/contact" component={Contact} />
-                <Redirect to="/" />
-            </Switch>
-            <Footer />
-        </>
-    );
+        <Provider store={Store}>
+            <div className="app">
+                <BookContainer />
+            </div>
+        </Provider>
+    )
 }
 
 export default App;
