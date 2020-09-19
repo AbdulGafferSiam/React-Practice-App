@@ -13,9 +13,6 @@ Store:
 
 spread operator: to clone state value
 
-Async Action creator ->
-Redux Thunk -> Middleware
-axios -> user to request API endpoint
 */
 
 const redux = require('redux');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { buyBook } from './redux';
-import './index.css';
+import { buyBook } from '../redux';
+import '../index.css';
 
 const BookContainer = (props) => {
     return (
